@@ -1,0 +1,16 @@
+.label {
+	-fx-text-fill: Blue;
+	-fx-background-color: Green;
+}
+.button {
+	-fx-background-color: Red;
+}
+#Rosso{
+	-fx-background-color: Red;
+}
+#Giallo{
+	-fx-background-color: Yellow;
+}
+#Verde{
+	-fx-background-color: Green;
+}
