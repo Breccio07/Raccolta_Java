@@ -54,18 +54,68 @@ public class Converitore extends Application{
 		
 		String s= "";
 		
-		
-		while(valore > 0) {
+		if(base == 16) {
 			
-			Resto= valore;
+			while(valore > 0) {
+				
+				Resto= valore;
+				
+				valore= valore / base;
+				
+				Resto= Resto-(valore*base);
+				
+				s= Resto+s;
+				
+				if(Resto == 10) {
+					
+					s="A"+s;
+					
+				}
+				if(Resto == 11) {
+					
+					s="B"+s;
+					
+				}
+				if(Resto == 12) {
+					
+					s="C"+s;
+					
+				}
+				if(Resto == 13) {
+					
+					s="D"+s;
+					
+				}
+				if(Resto == 14) {
+					
+					s="E"+s;
+					
+				}
+				if(Resto == 15) {
+					
+					s="F"+s;
+					
+				}
+				
+			}
 			
-			valore= valore / base;
+		}else {
 			
-			Resto= Resto-(valore*base);
-			
-			s= Resto+s;
+			while(valore > 0) {
+				
+				Resto= valore;
+				
+				valore= valore / base;
+				
+				Resto= Resto-(valore*base);
+				
+				s= Resto+s;
+				
+			}
 			
 		}
+		
+
 		
 
 		
