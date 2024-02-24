@@ -64,7 +64,11 @@ public class Converitore extends Application{
 				
 				Resto= Resto-(valore*base);
 				
-				s= Resto+s;
+				if( Resto < 10 ) {
+					
+					s= Resto+s;
+					
+				}
 				
 				if(Resto == 10) {
 					
