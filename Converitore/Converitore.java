@@ -1,6 +1,7 @@
 package it.edu.iisgubbio.Converitore;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +12,8 @@ import javafx.stage.Stage;
 public class Converitore extends Application{
 
 	TextField tValore= new TextField();
-	TextField tBase= new TextField();
+	TextField tBaseP= new TextField();
+	TextField tBaseA= new TextField();
 	
 	Label lRisultato= new Label();
 	
@@ -22,25 +24,30 @@ public class Converitore extends Application{
 		griglia.setHgap(10);
 		griglia.setVgap(10);
 		
-		Scene scena = new Scene(griglia, 300, 250);
+		griglia.setPadding(new Insets(10));
+		
+		Scene scena = new Scene(griglia, 300, 300);
 		
 		finestra.setScene(scena);
 		finestra.setTitle("Converitore");
 		finestra.show();
 		
 		Label lConversione= new Label("N. da convertire");
-		Label lBase= new Label("Base");
+		Label lBaseP= new Label("Base partenza");
+		Label lBaseA= new Label("Base arrivo");
 		Label lConverito= new Label("N. convertito");
 		
 		Button pCalcola= new Button("CONVERTI");
 		
 		griglia.add(lConversione, 0, 0);
 		griglia.add(tValore, 0, 1);
-		griglia.add(tBase, 0, 3);
-		griglia.add(lBase, 0, 2);
-		griglia.add(pCalcola, 0, 5);
-		griglia.add(lConverito, 0, 6);
-		griglia.add(lRisultato, 0, 7, 2, 1);
+		griglia.add(tBaseP, 0, 3);
+		griglia.add(lBaseP, 0, 2);
+		griglia.add(tBaseA, 0, 5);
+		griglia.add(lBaseA, 0, 4);
+		griglia.add(pCalcola, 0, 7);
+		griglia.add(lConverito, 0, 8);
+		griglia.add(lRisultato, 0, 9, 2, 1);
 	
 		pCalcola.setOnAction(e -> Calcola());
 	}
@@ -48,21 +55,22 @@ public class Converitore extends Application{
 	private void Calcola() {
 		
 		int valore= Integer.parseInt(tValore.getText());
-		int base= Integer.parseInt(tBase.getText());
+		int baseP= Integer.parseInt(tBaseP.getText());
+		int baseA= Integer.parseInt(tBaseA.getText());
 		
 		int Resto=0;
 		
 		String s= "";
 		
-		if(base == 16) {
+		if(baseA == 16) {
 			
 			while(valore > 0) {
 				
 				Resto= valore;
 				
-				valore= valore / base;
+				valore= valore / baseA;
 				
-				Resto= Resto-(valore*base);
+				Resto= Resto-(valore*baseA);
 				
 				if( Resto < 10 ) {
 					
@@ -98,8 +106,35 @@ public class Converitore extends Application{
 				if(Resto == 15) {
 					
 					s="F"+s;
-					
+
 				}
+				
+			}
+			lRisultato.setText(s);
+			
+		}
+			
+		if(baseP != 10) {
+			
+			int Somma=0;
+			
+			int Potenza=0;
+			
+			String n[]= tValore.getText().split("");
+			
+			int v[]= new int[n.length];
+			
+			for(int i=0; i< v.length; i++) {
+				
+				v[i]=Integer.parseInt(n[i]);
+				
+			}
+			
+			for(int i=v.length; i > 0; i--) {
+				
+				Somma+= Math.pow(v[i], Potenza);
+				
+				Potenza++;
 				
 			}
 			
@@ -109,21 +144,17 @@ public class Converitore extends Application{
 				
 				Resto= valore;
 				
-				valore= valore / base;
+				valore= valore / baseP;
 				
-				Resto= Resto-(valore*base);
+				Resto= Resto-(valore*baseP);
 				
 				s= Resto+s;
 				
-			}
-			
+				}
+			lRisultato.setText(s);
 		}
-		
 
-		
 
-		
-		lRisultato.setText(s);
 	}
 	
 	public static void main(String[] args) {
