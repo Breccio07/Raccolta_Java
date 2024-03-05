@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class Converitore extends Application{
+public class Convertitore extends Application{
 
 	TextField tValore= new TextField();
 	TextField tBaseP= new TextField();
@@ -18,7 +18,7 @@ public class Converitore extends Application{
 	Label lRisultato= new Label();
 	
 	public void start(Stage finestra) throws Exception {
-
+		
 		GridPane griglia= new GridPane();
 		
 		griglia.setHgap(10);
@@ -51,7 +51,7 @@ public class Converitore extends Application{
 	
 		pCalcola.setOnAction(e -> Calcola());
 	}
-	
+
 	private void Calcola() {
 		
 		int valore= Integer.parseInt(tValore.getText());
@@ -62,7 +62,72 @@ public class Converitore extends Application{
 		
 		String s= "";
 		
-		if(baseA == 16) {
+		int Somma=0;
+		
+		int Potenza=0;
+		
+		String n[]= tValore.getText().split("");
+		
+		int v[]= new int[n.length];
+		
+		for(int i=0; i< v.length; i++) {
+			
+			v[i]=Integer.parseInt(n[i]);
+			
+		}
+		
+		if(baseP == 10) {
+			
+			if(baseA == 16) {
+				
+				while(valore > 0) {
+					
+					Resto= valore;
+					
+					valore= valore / baseA;
+					
+					Resto= Resto-(valore*baseA);
+					
+					if( Resto < 10 ) {
+						
+						s= Resto+s;
+						
+					}
+					
+					if(Resto == 10) {
+						
+						s="A"+s;
+						
+					}
+					if(Resto == 11) {
+						
+						s="B"+s;
+						
+					}
+					if(Resto == 12) {
+						
+						s="C"+s;
+						
+					}
+					if(Resto == 13) {
+						
+						s="D"+s;
+						
+					}
+					if(Resto == 14) {
+						
+						s="E"+s;
+						
+					}
+					if(Resto == 15) {
+						
+						s="F"+s;
+
+					}
+				
+			}
+				
+			}
 			
 			while(valore > 0) {
 				
@@ -72,91 +137,30 @@ public class Converitore extends Application{
 				
 				Resto= Resto-(valore*baseA);
 				
-				if( Resto < 10 ) {
-					
-					s= Resto+s;
-					
-				}
-				
-				if(Resto == 10) {
-					
-					s="A"+s;
-					
-				}
-				if(Resto == 11) {
-					
-					s="B"+s;
-					
-				}
-				if(Resto == 12) {
-					
-					s="C"+s;
-					
-				}
-				if(Resto == 13) {
-					
-					s="D"+s;
-					
-				}
-				if(Resto == 14) {
-					
-					s="E"+s;
-					
-				}
-				if(Resto == 15) {
-					
-					s="F"+s;
-
-				}
-				
-			}
-			lRisultato.setText(s);
-			
-		}
-			
-		if(baseP != 10) {
-			
-			int Somma=0;
-			
-			int Potenza=0;
-			
-			String n[]= tValore.getText().split("");
-			
-			int v[]= new int[n.length];
-			
-			for(int i=0; i< v.length; i++) {
-				
-				v[i]=Integer.parseInt(n[i]);
-				
-			}
-			
-			for(int i=v.length; i > 0; i--) {
-				
-				Somma+= Math.pow(v[i], Potenza);
-				
-				Potenza++;
-				
-			}
-			
-		}else {
-			
-			while(valore > 0) {
-				
-				Resto= valore;
-				
-				valore= valore / baseP;
-				
-				Resto= Resto-(valore*baseP);
-				
 				s= Resto+s;
 				
 				}
-			lRisultato.setText(s);
+			
+		}else {
+			
+			if(baseA == 10) {
+				
+				Potenza = v.length;
+				
+				for(int i=0; i < v.length; i++) {
+					
+					Somma+= v[i]*Math.pow(baseP, Potenza-1);
+					
+					Potenza--;
+					
+					s= ""+Somma;
+					
+				}	
+			}
 		}
-
-
+		lRisultato.setText(s);
+		
 	}
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
