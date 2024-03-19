@@ -51,83 +51,18 @@ public class Convertitore extends Application{
 	
 		pCalcola.setOnAction(e -> Calcola());
 	}
-
+	
 	private void Calcola() {
 		
-		int valore= Integer.parseInt(tValore.getText());
-		int baseP= Integer.parseInt(tBaseP.getText());
 		int baseA= Integer.parseInt(tBaseA.getText());
+		int baseP= Integer.parseInt(tBaseP.getText());
+		int valore= Integer.parseInt(tValore.getText());
 		
 		int Resto=0;
 		
-		String s= "";
-		
-		int Somma=0;
-		
-		int Potenza=0;
-		
-		String n[]= tValore.getText().split("");
-		
-		int v[]= new int[n.length];
-		
-		for(int i=0; i< v.length; i++) {
-			
-			v[i]=Integer.parseInt(n[i]);
-			
-		}
+		String s="";
 		
 		if(baseP == 10) {
-			
-			if(baseA == 16) {
-				
-				while(valore > 0) {
-					
-					Resto= valore;
-					
-					valore= valore / baseA;
-					
-					Resto= Resto-(valore*baseA);
-					
-					if( Resto < 10 ) {
-						
-						s= Resto+s;
-						
-					}
-					
-					if(Resto == 10) {
-						
-						s="A"+s;
-						
-					}
-					if(Resto == 11) {
-						
-						s="B"+s;
-						
-					}
-					if(Resto == 12) {
-						
-						s="C"+s;
-						
-					}
-					if(Resto == 13) {
-						
-						s="D"+s;
-						
-					}
-					if(Resto == 14) {
-						
-						s="E"+s;
-						
-					}
-					if(Resto == 15) {
-						
-						s="F"+s;
-
-					}
-				
-			}
-				
-			}
 			
 			while(valore > 0) {
 				
@@ -137,30 +72,78 @@ public class Convertitore extends Application{
 				
 				Resto= Resto-(valore*baseA);
 				
-				s= Resto+s;
-				
+				if( Resto < 10 ) {
+					
+					s= Resto+s;
+					
+				}else {
+					
+					if(Resto == 10) {
+						
+						s= "A" + s;
+						
+					}
+					if(Resto == 11) {
+						
+						s= "B" + s;
+						
+					}
+					if(Resto == 12) {
+						
+						s= "C" + s;
+						
+					}
+					if(Resto == 13) {
+						
+						s= "D" + s;
+						
+					}
+					if(Resto == 14) {
+						
+						s= "E" + s;
+						
+					}
+					if(Resto == 15) {
+						
+						s= "F" + s;
+						
+					}
+					
 				}
-			
-		}else {
-			
-			if(baseA == 10) {
-				
-				Potenza = v.length;
-				
-				for(int i=0; i < v.length; i++) {
-					
-					Somma+= v[i]*Math.pow(baseP, Potenza-1);
-					
-					Potenza--;
-					
-					s= ""+Somma;
-					
-				}	
 			}
+		}
+		
+		if(baseA == 10) {
+			
+			int Somma=0;
+			
+			int Potenza=0;
+			
+			String n[]= tValore.getText().split("");
+			
+			int v[]= new int[n.length];
+			
+			for(int i=0; i< v.length; i++) {
+				
+				v[i]=Integer.parseInt(n[i]);
+				
+			}
+			
+			Potenza = v.length;
+			
+			for(int i=0; i < v.length; i++) {
+				
+				Somma+= v[i]*Math.pow(baseP, Potenza-1);
+				
+				Potenza--;
+				
+				s= ""+Somma;
+		}
 		}
 		lRisultato.setText(s);
 		
 	}
+
 	public static void main(String[] args) {
 		launch(args);
 	}
