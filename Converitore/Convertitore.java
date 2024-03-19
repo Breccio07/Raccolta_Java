@@ -1,5 +1,7 @@
 package it.edu.iisgubbio.Converitore;
 
+import java.util.Hashtable;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -53,6 +55,38 @@ public class Convertitore extends Application{
 	}
 	
 	private void Calcola() {
+		
+		Hashtable<Integer, String> interi = new Hashtable<Integer, String>();
+		
+		interi.put(10, "A");
+		interi.put(11, "B");
+		interi.put(12, "C");
+		interi.put(13, "D");
+		interi.put(14, "E");
+		interi.put(15, "F");
+		
+		interi.get(10);
+		interi.get(11);
+		interi.get(12);
+		interi.get(13);
+		interi.get(14);
+		interi.get(15);
+		
+		Hashtable<String, Integer> dizionario = new Hashtable<String, Integer>();
+		
+		dizionario.put("A", 10);
+		dizionario.put("B", 11);
+		dizionario.put("C", 12);
+		dizionario.put("D", 13);
+		dizionario.put("E", 14);
+		dizionario.put("F", 15);
+		
+		dizionario.get("A");
+		dizionario.get("B");
+		dizionario.get("C");
+		dizionario.get("D");
+		dizionario.get("E");
+		dizionario.get("F");
 		
 		int baseA= Integer.parseInt(tBaseA.getText());
 		int baseP= Integer.parseInt(tBaseP.getText());
@@ -119,9 +153,48 @@ public class Convertitore extends Application{
 			int Somma=0;
 			
 			int Potenza=0;
-			
+		
 			String n[]= tValore.getText().split("");
 			
+			for(int i=0; i< n.length; i++) {
+				
+				if(n[i] == "A") {
+					
+					n[i] = "10";
+					
+				}
+				
+				if(n[i] == "B") {
+					
+					n[i] = "10";
+					
+				}
+				
+				if(n[i] == "C") {
+					
+					n[i] = "10";
+					
+				}
+				
+				if(n[i] == "D") {
+					
+					n[i] = "10";
+					
+				}
+				
+				if(n[i] == "E") {
+					
+					n[i] = "10";
+					
+				}
+				
+				if(n[i] == "F") {
+					
+					n[i] = "10";
+					
+				}
+				
+			}
 			
 			int v[]= new int[n.length];
 			
