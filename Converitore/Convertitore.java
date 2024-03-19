@@ -115,15 +115,18 @@ public class Convertitore extends Application{
 		
 		if(baseA == 10) {
 			
+			
 			int Somma=0;
 			
 			int Potenza=0;
 			
 			String n[]= tValore.getText().split("");
 			
+			
 			int v[]= new int[n.length];
 			
 			for(int i=0; i< v.length; i++) {
+				
 				
 				v[i]=Integer.parseInt(n[i]);
 				

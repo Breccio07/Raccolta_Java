@@ -1,9 +1,0 @@
-Cose da fare sul programma Convertitore
-- da base 10 a base 2 (fatto)
-- da base !10 a base 16 
-- da base diversa da 10 a base 2
-- da base 16 a base 10
-- da base 16 a base 2
-- da base 10 a base 16 (fatto)
-- da base 2 a base 10 (fatto)
-- da base < 10 a base 10 (fatto)
