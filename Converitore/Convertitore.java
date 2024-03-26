@@ -1,6 +1,6 @@
 package it.edu.iisgubbio.Converitore;
 
-import java.util.Hashtable;
+import java.util.*;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -18,6 +18,11 @@ public class Convertitore extends Application{
 	TextField tBaseA= new TextField();
 	
 	Label lRisultato= new Label();
+	
+	Hashtable <Integer,String> mydict =  new Hashtable <Integer,String>();
+	
+	Hashtable <String,String> base16 =  new Hashtable <String,String>();
+	
 	
 	public void start(Stage finestra) throws Exception {
 		
@@ -52,51 +57,67 @@ public class Convertitore extends Application{
 		griglia.add(lRisultato, 0, 9, 2, 1);
 	
 		pCalcola.setOnAction(e -> Calcola());
+		
+		
 	}
 	
 	private void Calcola() {
 		
-		Hashtable<Integer, String> interi = new Hashtable<Integer, String>();
+		mydict.put(10, "A");
+		mydict.put(11, "B");
+		mydict.put(12, "C");
+		mydict.put(13, "D");
+		mydict.put(14, "E");
+		mydict.put(15, "F");
 		
-		interi.put(10, "A");
-		interi.put(11, "B");
-		interi.put(12, "C");
-		interi.put(13, "D");
-		interi.put(14, "E");
-		interi.put(15, "F");
+		base16.put("1", "1");
+		base16.put("2", "2");
+		base16.put("3", "3");
+		base16.put("4", "4");
+		base16.put("5", "5");
+		base16.put("6", "6");
+		base16.put("7", "7");
+		base16.put("8", "8");
+		base16.put("9", "9");
+		base16.put("A", "10");
+		base16.put("B", "11");
+		base16.put("C", "12");
+		base16.put("D", "13");
+		base16.put("E", "14");
+		base16.put("F", "15");
 		
-		interi.get(10);
-		interi.get(11);
-		interi.get(12);
-		interi.get(13);
-		interi.get(14);
-		interi.get(15);
+		int Somma=0;
 		
-		Hashtable<String, Integer> dizionario = new Hashtable<String, Integer>();
+		int Potenza=0;
 		
-		dizionario.put("A", 10);
-		dizionario.put("B", 11);
-		dizionario.put("C", 12);
-		dizionario.put("D", 13);
-		dizionario.put("E", 14);
-		dizionario.put("F", 15);
+		int valore, Resto;
+	
+		String n[]= tValore.getText().split("");
 		
-		dizionario.get("A");
-		dizionario.get("B");
-		dizionario.get("C");
-		dizionario.get("D");
-		dizionario.get("E");
-		dizionario.get("F");
+		for(int i=0; i<n.length; i++) {
+			
+			n[i] = base16.get(n[i]);
+			
+		}
+		
+		int v[]= new int[n.length];
+		
+		for(int i=0; i< v.length; i++) {
+			
+			v[i]=Integer.parseInt(n[i]);
+			
+		}
 		
 		int baseA= Integer.parseInt(tBaseA.getText());
 		int baseP= Integer.parseInt(tBaseP.getText());
-		int valore= Integer.parseInt(tValore.getText());
-		
-		int Resto=0;
+
 		
 		String s="";
 		
 		if(baseP == 10) {
+			
+			valore= Integer.parseInt(tValore.getText());
+			Resto=0;
 			
 			while(valore > 0) {
 				
@@ -112,98 +133,13 @@ public class Convertitore extends Application{
 					
 				}else {
 					
-					if(Resto == 10) {
-						
-						s= "A" + s;
-						
-					}
-					if(Resto == 11) {
-						
-						s= "B" + s;
-						
-					}
-					if(Resto == 12) {
-						
-						s= "C" + s;
-						
-					}
-					if(Resto == 13) {
-						
-						s= "D" + s;
-						
-					}
-					if(Resto == 14) {
-						
-						s= "E" + s;
-						
-					}
-					if(Resto == 15) {
-						
-						s= "F" + s;
-						
-					}
+					s = mydict.get(Resto) + s;
 					
 				}
 			}
 		}
 		
 		if(baseA == 10) {
-			
-			
-			int Somma=0;
-			
-			int Potenza=0;
-		
-			String n[]= tValore.getText().split("");
-			
-			for(int i=0; i< n.length; i++) {
-				
-				if(n[i] == "A") {
-					
-					n[i] = "10";
-					
-				}
-				
-				if(n[i] == "B") {
-					
-					n[i] = "10";
-					
-				}
-				
-				if(n[i] == "C") {
-					
-					n[i] = "10";
-					
-				}
-				
-				if(n[i] == "D") {
-					
-					n[i] = "10";
-					
-				}
-				
-				if(n[i] == "E") {
-					
-					n[i] = "10";
-					
-				}
-				
-				if(n[i] == "F") {
-					
-					n[i] = "10";
-					
-				}
-				
-			}
-			
-			int v[]= new int[n.length];
-			
-			for(int i=0; i< v.length; i++) {
-				
-				
-				v[i]=Integer.parseInt(n[i]);
-				
-			}
 			
 			Potenza = v.length;
 			
@@ -215,7 +151,9 @@ public class Convertitore extends Application{
 				
 				s= ""+Somma;
 		}
+			
 		}
+		
 		lRisultato.setText(s);
 		
 	}
